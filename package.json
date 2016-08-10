@@ -1,0 +1,33 @@
+{
+  "name": "gaston",
+  "version": "1.0.0",
+  "description": "api-server for pet projects",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "5.10.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karlpokus/gaston.git"
+  },
+  "keywords": [
+    "api",
+    "server"
+  ],
+  "author": "Karl Pokus <karl.pokus@gmail.com> (https://github.com/karlpokus)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karlpokus/gaston/issues"
+  },
+  "homepage": "https://github.com/karlpokus/gaston#readme",
+  "dependencies": {
+    "pype-stack": "^0.1.1"
+  },
+  "devDependencies": {
+    "klocka": "^1.1.0"
+  }
+}

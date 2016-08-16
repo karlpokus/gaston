@@ -3,12 +3,13 @@ var http = require('http'),
     port = process.env.PORT || 8080,
     pype = require('pype-stack'),
     klocka = require('klocka'),
-    kork = require('./lib/kork').init(2500),
+    kork = require('kork')(1000),
+    cors = require('./lib/cors'),
     echoJS = require('./apis/echo'),
     errorHandler = function(err, req, res){
       console.error(err);
       res.statusCode = 500;
-      res.end('Sorry');
+      res.end();
     };
 
 server.on('request', function(req, res){
@@ -16,14 +17,14 @@ server.on('request', function(req, res){
   // echoJS
   if (req.method === 'GET' && req.url === '/echoJS') {
     
-    pype(null, [klocka, kork.limit.bind(kork), echoJS], errorHandler, function(req, res){      
+    pype(null, [klocka, cors, kork, echoJS], errorHandler, function(req, res){      
       res.statusCode = 200;
-      res.end(JSON.parse(req.data));
+      res.end(req.data);
     })(req, res);
     
   } else {
-    res.statusCode = 200;
-    res.end('Nothing to see here.');
+    res.statusCode = 404;
+    res.end();
   }
 });
 

@@ -1,4 +1,5 @@
 var http = require('http'),
+    url = require('url'),
     server = http.createServer(),
     port = process.env.PORT || 8080,
     pype = require('pype-stack'),
@@ -10,18 +11,20 @@ var http = require('http'),
       console.error(err);
       res.statusCode = 500;
       res.end();
+    },
+    finalHandler = function(req, res) {
+      res.statusCode = 200;
+      res.end(req.data);
     };
 
 server.on('request', function(req, res){
+  var path = url.parse(req.url).pathname;
   
   // echoJS
-  if (req.method === 'GET' && req.url === '/echoJS') {
+  if (req.method === 'GET' && path === '/echoJS') {
+    pype(null, [klocka, cors, kork, echoJS, finalHandler], errorHandler)(req, res);
     
-    pype(null, [klocka, cors, kork, echoJS], errorHandler, function(req, res){      
-      res.statusCode = 200;
-      res.end(req.data);
-    })(req, res);
-    
+    // wrong url
   } else {
     res.statusCode = 404;
     res.end();

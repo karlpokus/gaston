@@ -7,6 +7,7 @@ var http = require('http'),
     kork = require('kork')(1000),
     cors = require('./lib/cors'),
     echoJS = require('./apis/echo'),
+    synonymer = require('./apis/synonymer'),
     errorHandler = function(err, req, res){
       console.error(err);
       res.statusCode = 500;
@@ -24,8 +25,12 @@ server.on('request', function(req, res){
   if (req.method === 'GET' && path === '/echoJS') {
     pype(null, [klocka, cors, kork, echoJS, finalHandler], errorHandler)(req, res);
     
-    // wrong url
+    // synonymer.se
+  } else if (req.method === 'GET' && path === '/synonymer') {
+    pype(null, [klocka, cors, synonymer, finalHandler], errorHandler)(req, res);
+    
   } else {
+    // wrong url
     res.statusCode = 404;
     res.end();
   }

@@ -1,6 +1,6 @@
 {
   "name": "gaston",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "api-server for pet projects",
   "main": "server.js",
   "scripts": {
@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/karlpokus/gaston#readme",
   "dependencies": {
+    "cheerio": "^0.22.0",
     "klocka": "^1.1.0",
     "kork": "^0.1.0",
     "pype-stack": "^0.1.1"

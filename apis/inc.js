@@ -11,8 +11,8 @@ module.exports = function(req, res, next){
         data = JSON.parse(data);
         data.cats++;
         req.data = JSON.stringify(data);
-      } catch() {
-        return next('Error parsing json');
+      } catch(e) {
+        return next(e.message);
       }
     })
 }

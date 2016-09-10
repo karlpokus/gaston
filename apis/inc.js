@@ -11,6 +11,7 @@ module.exports = function(req, res, next){
         data = JSON.parse(data);
         data.cats++;
         req.data = JSON.stringify(data);
+        return next();
       } catch(e) {
         return next(e.message);
       }

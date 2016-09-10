@@ -9,6 +9,9 @@ t // type - top or latest. Defaults to latest
 
 https://gaston-api.herokuapp.com/synonymer
 s // string
+
+https://gaston-api.herokuapp.com/inc
+{cats: n++}
 ```
 
 # todo
